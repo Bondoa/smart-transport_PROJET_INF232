@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartTransport Yaoundé</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚍 Collecte des données de transport</h1>
+
+<form id="form">
+
+    <!-- Nom -->
+    <label>Nom de l’usager</label>
+    <input type="text" id="nom" placeholder="Ex: Alexandre" required>
+
+    <!-- Départ -->
+    <label>Quartier de départ</label>
+    <input type="text" id="depart" placeholder="Ex: Melen, Bastos..." required>
+
+    <!-- Arrivée -->
+    <label>Quartier d’arrivée</label>
+    <input type="text" id="arrivee" placeholder="Ex: Mokolo, Etoudi..." required>
+
+    <!-- Moyen -->
+    <label>Type de moyen de transport</label>
+    <select id="moyen" required>
+        <option value="">-- Choisir un moyen --</option>
+        <option value="Taxi">🚖 Taxi</option>
+        <option value="Bus">🚌 Bus</option>
+        <option value="Moto">🏍️ Moto</option>
+        <option value="Voiture personnelle">🚗 Voiture personnelle</option>
+        <option value="Marche">🚶 Marche</option>
+    </select>
+
+    <!-- Temps -->
+    <label>Durée du trajet (en minutes)</label>
+    <input type="number" id="temps" placeholder="Ex: 25" required>
+
+    <!-- Coût -->
+    <label>Coût du transport (en FCFA)</label>
+    <input type="number" id="cout" placeholder="Ex: 500" required>
+
+    <!-- Satisfaction -->
+    <label>Niveau de satisfaction</label>
+    <select id="satisfaction" required>
+        <option value="">-- Choisir --</option>
+        <option value="1">😡 Très mauvais</option>
+        <option value="2">😕 Mauvais</option>
+        <option value="3">😐 Moyen</option>
+        <option value="4">🙂 Bon</option>
+        <option value="5">😄 Excellent</option>
+    </select>
+
+    <button type="submit">📩 Envoyer les données</button>
+
+</form>
+
+<h2>📊 Statistiques</h2>
+<button onclick="loadStats()">Afficher les statistiques</button>
+
+<div id="stats"></div>
+
+<canvas id="chart" style="margin-top:20px;" height="100"></canvas>
+
+<h2>🔮 Prédiction du coût</h2>
+
+<input type="number" id="temps_prediction" placeholder="Entrer le temps en minutes">
+<button onclick="predict()">Prédire le coût</button>
+
+<p id="resultat_prediction"></p>
+
+<h2>🤖 Prédire la satisfaction</h2>
+
+<input type="number" id="temps_class" placeholder="Temps (minutes)">
+<input type="number" id="cout_class" placeholder="Coût (FCFA)">
+
+<select id="moyen_class">
+    <option value="0">🚖 Taxi</option>
+    <option value="1">🚌 Bus</option>
+    <option value="2">🏍️ Moto</option>
+    <option value="3">🚗 Voiture</option>
+</select>
+
+<button onclick="classify()">Prédire satisfaction</button>
+
+<p id="resultat_classification"></p>
+
+</div>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
